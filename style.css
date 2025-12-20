@@ -50,8 +50,8 @@ h2 {
 }
 
 .game {
-    width: 440px;
-    height: 440px;
+    width: 430px;
+    height: 430px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -69,4 +69,13 @@ h2 {
     font-size: 3em;
     background: white;
     transition: 0.25s;
+}
+
+.item:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: pink;
+    transition: 0.25s;
+    transform: rotate(0deg);
 }
