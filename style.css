@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: pink;
+    background: #f7e04c;
 }
 
 .container {
@@ -21,13 +21,13 @@ body {
     align-items: center;
     flex-direction: column;
     gap: 30px;
-    background: purple;
+    background: #eca750;
     padding: 40px 60px;
 }
 
 h2 {
     font-size: 3em;
-    color: white;
+    color: black;
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
@@ -74,7 +74,7 @@ h2 {
 
 .reset:focus {
     color: white;
-    background: pink;
+    background: #f7e04c;
 }
 
 .game {
@@ -107,7 +107,7 @@ h2 {
     content: '';
     position: absolute;
     inset: 0;
-    background: pink;
+    background: #f7e04c;
     /* opacity: 0.85; */
     transition: 0.25s;
     transform: rotate(0deg);
