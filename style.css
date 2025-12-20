@@ -71,11 +71,21 @@ h2 {
     transition: 0.25s;
 }
 
+.item.boxOpen {
+    transform: rotateY(0deg);
+}
+
 .item:after {
     content: '';
     position: absolute;
     inset: 0;
     background: pink;
+    /* opacity: 0.85; */
     transition: 0.25s;
     transform: rotate(0deg);
+    backface-visibility: hidden;
+}
+
+.boxOpen:after {
+    transform: rotateY(180deg);
 }
