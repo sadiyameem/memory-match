@@ -21,10 +21,12 @@
 function startGame(level) {
     const game= document.querySelector('.game');
     game.innerHTML = '';
-}
-    let emojis;
-    if(level === 'easy') emojis = ["🍪","🍪","🍰","🍰","🥧","🥧"];
-    else if(level === 'medium') emojis = []
+
+        let emojis;
+    if(level === 'easy') emojis = ["🍪","🍪","🍰","🍰","🥧","🥧","🧁","🧁"];
+    else if(level === 'medium') emojis = ["🥩","🥩","🍳","🍳","🍲","🍲","🍅","🍅","🥕","🥕","☕","☕"];
+    else if(level === 'hard') emojis = ["🍫","🍫","🦈","🦈","🦝","🦝","🦕","🦕","⭐","⭐","🌶️","🌶️","🧋","🧋","🥖","🥖"];
+
     var shuf_emojis = emojis.sort(() => (Math.random() > .5) ? 2 : -1);
     for ( var i =0; i<emojis.length; i++){
         let box = document.createElement('div')
@@ -56,6 +58,8 @@ function startGame(level) {
 
         document.querySelector('.game').appendChild(box);
     }
+}
+startGame('easy')
 </script>
 </body>
 </html>

@@ -32,6 +32,12 @@ h2 {
     letter-spacing: 0.1em;
 }
 
+.levels button {
+    padding: 8px 14px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
 .reset {
     padding: 15px 20px;
     color: black;
@@ -51,7 +57,7 @@ h2 {
 
 .game {
     width: 430px;
-    height: 430px;
+    height: auto;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -84,6 +90,7 @@ h2 {
     transition: 0.25s;
     transform: rotate(0deg);
     backface-visibility: hidden;
+    pointer-events: none;
 }
 
 .boxOpen:after, 
