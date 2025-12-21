@@ -44,6 +44,7 @@ function startGame(level) {
         box.innerHTML = shuf_emojis[i]
 
         box.onclick = function(){
+
             // move counter
             moves++;
             document.querySelector('.moves').textContent = "Moves: " + moves;
@@ -52,6 +53,7 @@ function startGame(level) {
             flipSound.play();
             // flip card
             this.classList.add('boxOpen')
+            
             // store reference to the clicked card
             let clickCard = this;
 
