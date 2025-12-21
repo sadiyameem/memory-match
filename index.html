@@ -22,43 +22,62 @@ function startGame(level) {
     const game= document.querySelector('.game');
     game.innerHTML = '';
 
-        let emojis;
-    if(level === 'easy') emojis = ["🍪","🍪","🍰","🍰","🥧","🥧","🧁","🧁"];
-    else if(level === 'medium') emojis = ["🥩","🥩","🍳","🍳","🍲","🍲","🍅","🍅","🥕","🥕","☕","☕"];
-    else if(level === 'hard') emojis = ["🍫","🍫","🦈","🦈","🦝","🦝","🦕","🦕","⭐","⭐","🌶️","🌶️","🧋","🧋","🥖","🥖"];
+    // emojis list    
+    let emojis;
+        if(level === 'easy') emojis = ["🍪","🍪","🍰","🍰","🥧","🥧","🧁","🧁"];
+        else if(level === 'medium') emojis = ["🥩","🥩","🍳","🍳","🍲","🍲","🍅","🍅","🥕","🥕","☕","☕"];
+        else if(level === 'hard') emojis = ["🍫","🍫","🦈","🦈","🦝","🦝","🦕","🦕","⭐","⭐","🌶️","🌶️","🧋","🧋","🥖","🥖"];
 
+    // shuffles the emojis randomly
     var shuf_emojis = emojis.sort(() => (Math.random() > .5) ? 2 : -1);
+
     for ( var i =0; i<emojis.length; i++){
         let box = document.createElement('div')
         box.className = 'item';
         box.innerHTML = shuf_emojis[i]
 
         box.onclick = function(){
+
+            // flip card
             this.classList.add('boxOpen')
+
+            // wait before checking match
             setTimeout(function(){
+
+                // check is more than one card is open
                 if(document.querySelectorAll('.boxOpen').length > 1){
+
+                    // if the two open cards are matched
                     if(document.querySelectorAll('.boxOpen')[0].innerHTML == document.querySelectorAll('.boxOpen')[1].innerHTML){
+
+                        // mark cards as matched
                         document.querySelectorAll('.boxOpen')[0].classList.add('boxMatch')
                         document.querySelectorAll('.boxOpen')[1].classList.add('boxMatch')
 
+                        // close cards as matched
                         document.querySelectorAll('.boxOpen')[1].classList.remove('boxOpen')
                         document.querySelectorAll('.boxOpen')[0].classList.remove('boxOpen')
 
+                        // check if all cards are matched
                         if (document.querySelectorAll('.boxMatch').length === emojis.length) {
-                            alert('win')
+                            alert('You Win!')
                         }
       
                     } else {
+                        // if cards do not match, flip them back
                         document.querySelectorAll('.boxOpen')[1].classList.remove('boxOpen')
                         document.querySelectorAll('.boxOpen')[0].classList.remove('boxOpen')
                     }
                 }
-            },500)
+            },500);
         }
 
+        // add cards to the game board
         document.querySelector('.game').appendChild(box);
     }
 }
+
+// start game on easy mode
 startGame('easy')
 </script>
 </body>
