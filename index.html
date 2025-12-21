@@ -14,6 +14,7 @@
             <button onclick="startGame('medium')">Medium</button>
             <button onclick="startGame('hard')">Hard</button>
         </div>
+        <p class="moves">Moves: 0</p>
         <div class="game"></div>
         <button class="reset" onclick="window.location.reload()">Reset Game</button>
     </div>
@@ -23,6 +24,8 @@
     const winSound = new Audio('winning.mp3');
 
 function startGame(level) {
+    let moves = 0;
+    document.querySelector('.moves').textContent = "Moves: 0";
     const game= document.querySelector('.game');
     game.innerHTML = '';
 
@@ -41,6 +44,9 @@ function startGame(level) {
         box.innerHTML = shuf_emojis[i]
 
         box.onclick = function(){
+            // move counter
+            moves++;
+            document.querySelector('.moves').textContent = "Moves: " + moves;
 
             // play flip sound
             flipSound.play();
