@@ -14,7 +14,10 @@
             <button onclick="startGame('medium')">Medium</button>
             <button onclick="startGame('hard')">Hard</button>
         </div>
+
         <p class="moves">Moves: 0</p>
+        <p class="timer">Time 0s</p>
+
         <div class="game"></div>
         <button class="reset" onclick="window.location.reload()">Reset Game</button>
     </div>
@@ -23,9 +26,21 @@
     const flipSound = new Audio('flip.mp3');
     const winSound = new Audio('winning.mp3');
 
+    // timer
+    let time = 0;
+    let timerInterval;
+    let timerStarted = false;
+
 function startGame(level) {
     let moves = 0;
     document.querySelector('.moves').textContent = "Moves: 0";
+
+    // reset and start timer
+    timerStarted = false;
+    clearInterval(timerInterval);
+    time = 0;
+    document.querySelector('.timer').textContent = "Time: 0s";
+
     const game= document.querySelector('.game');
     game.innerHTML = '';
 
@@ -44,6 +59,15 @@ function startGame(level) {
         box.innerHTML = shuf_emojis[i]
 
         box.onclick = function(){
+
+            // start timer on first click
+            if (!timerStarted) {
+                timerStarted = true;
+                timerInterval = setInterval(() => {
+                    time++;
+                    document.querySelector('.timer').textContent = "Time: " + time + "s";
+                }, 1000);
+            }
 
             // move counter
             moves++;
@@ -76,6 +100,7 @@ function startGame(level) {
 
                         // check if all cards are matched
                         if (document.querySelectorAll('.boxMatch').length === emojis.length) {
+                            clearInterval(timerInterval); // stop timer on win
                             winSound.play(); // play winning sound
                             alert('You Win!')
                         }
