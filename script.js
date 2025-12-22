@@ -1,9 +1,7 @@
-<script>
-    // sound effects
+// variables and sounds
     const flipSound = new Audio('flip.mp3');
     const winSound = new Audio('winning.mp3');
 
-    // timer
     let time = 0;
     let timerInterval;
     let timerStarted = false;
@@ -44,10 +42,8 @@ function startGame(level) {
             let box = document.createElement('div');
             box.className = 'item';
             box.innerHTML = shuf_emojis[i];
-        }
 
-
-            // start timer on first click
+                        // start timer on first click
             box.onclick = function(){
             if (!timerStarted) {
                 timerStarted = true;
@@ -101,11 +97,9 @@ function startGame(level) {
                 }
             },500);
         }
+        }
+
 
         // add cards to the game board
-        document.querySelector('.game').appendChild(box);
+        game.appendChild(box);
     }
-
-// start game on easy mode
-startGame('easy')
-</script>
