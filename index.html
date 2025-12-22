@@ -2,14 +2,39 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content=" "width=device-width, initial-scale="1.0">
         <title>Memory Match Game</title>
         <link rel="stylesheet" href="style.css">
     </head>
 <body>
-    <div class="container">
-        <h2>Memory Game</h2>
-        <div class="game"></div>
+    <div id="start-menu" class="menu-container">
+        <h1>Memory Game</h1>
+        <p>Select the difficulty</p>
+
+        <div id="level-buttons" class="level-buttons">
+            <button class="level-btn selected" data-level="easy">Easy</button>
+            <button class="level-btn" data-level="medium">Medium</button>
+            <button class="level-btn" data-level="hard">Hard</button>
+        </div>
+
+        <button id="start-btn" onclick="startGame()">Start Game</button>
     </div>
+
+    <div class="game-container hidden" id="game-container">
+        <h1>Memory Game</h1>
+
+        <p>Movements: <span id="moves">0</span></p>
+        <p>Time: <span id="timer">00:00</span></p>
+
+        <div class="grid" id="game-board"></div>
+
+        <div class="hidden" id="win-message">You win!</div>
+        <div class="hidden" id="lose-message">Time's up. Try again.</div>
+        
+        <button onclick="restartGame()">Restart</button>
+        <button onclick="goToMenu()">Return to menu</button>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
