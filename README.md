@@ -5,10 +5,8 @@
 - How it works you simply click on cards that flip over and you have to find their matches.
 
 # Features
-- 3 different levels
-- Moves counter
-- Time counter
-- Reset button
+- my own images
+- my own Colors
 
 # How I made this
 - HTML
@@ -19,5 +17,5 @@
 - I wanted to do this project again but make it flavortown theme related with the food and animals.
 
 # Challenges/Learning
-- I learned how to add different levels. 
-- A challenge was to add the timer and make it start as soon as the player clicks a card.
+- I learned how to add different levels, a timer and a move counter all in a video. 
+- A challenge was to make the images flip instead of tilting, making the buttons work on the second page, and also making the images not visable.
