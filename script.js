@@ -68,11 +68,11 @@ function disableAllCards() {
     function handleFlip(e) {
         const card = e.currentTarget;
 
-            if (
-        card.classList.contains('flipped') ||
-        flippedCards.length === 1 ||
-        card === flippedCards[0]
-     ) {
+    if (card.classList.contains('flipped') || flippedCards.includes(card)) {
+        return;
+    }
+
+    if (flippedCards.length === 2) {
         return;
     }
 
@@ -89,7 +89,6 @@ function disableAllCards() {
         if (match) {
             matchedPairs++;
             flippedCards = [];
-
             if(matchedPairs === cards.length / 2) {
                 stopTimer();
                 winMessage.classList.remove('hidden');
@@ -108,21 +107,17 @@ function disableAllCards() {
 // create board
 function createBoard() {
     let pairs, gridColumns;
-
     if (level === 'easy') {
         pairs = 8;
         gridColumns = 4;
     }
-
     else if (level === 'medium') {
         pairs = 10;
         gridColumns = 5;
     }
-
     else {
         pairs = 15;
-        gridColumns = 6;
-    }
+        gridColumns = 6; }
 
 // duplicate and shuffle cards
 cards = shuffle([...avaliableEmojis.slice(0, pairs), ...avaliableEmojis.slice(0, pairs)]);
@@ -137,7 +132,6 @@ cards = shuffle([...avaliableEmojis.slice(0, pairs), ...avaliableEmojis.slice(0,
     movesDisplay.textContent = '0';
     winMessage.classList.add('hidden');
     loseMessage.classList.add('hidden');
-    flippedCards = [];
 
     // create card elements
     cards.forEach((emoji, index) => {
@@ -145,13 +139,11 @@ cards = shuffle([...avaliableEmojis.slice(0, pairs), ...avaliableEmojis.slice(0,
         card.classList.add('card');
         card.dataset.emoji = emoji;
         card.dataset.index = index;
-
         card.innerHTML = `
         <div class="inner-card">
             <div class="front"></div>
-            <div class="back">${emoji}</div>
-        </div>
-    `;
+            <div class="back"><span>${emoji}</span></div>
+        </div>`;
         card.addEventListener('click', handleFlip);
         board.appendChild(card);
     });

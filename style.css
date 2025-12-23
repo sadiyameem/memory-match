@@ -1,6 +1,6 @@
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #8360c3, #2ebf91);
+    background: lightblue;
     color: white;
     text-align: center;
     margin: 0;
@@ -11,9 +11,9 @@ body {
     max-width: 700px;
     margin: 50px auto;
     padding: 20px;
-    background: rgba(0,0,0,0.3);
+    background: black;
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    box-shadow: gray;
 }
 
 .grid {
@@ -26,7 +26,7 @@ body {
     width: 100%;
     padding-top: 100%;
     position: relative;
-    perspective: 100px;
+    perspective: 600px;
     cursor: pointer;
 }
 
@@ -36,19 +36,17 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #ffffff20;
-    border-radius: 10px;
     transform-style: preserve-3d;
     transition: transform 0.5s;
+    pointer-events: none; /* clicks pass to parent card */
 }
 
 .card.flipped .inner-card {
-    transform: rotate(100deg);
+    transform: rotateY(180deg);
 }
 
-.front .back {
+.front, .back {
     position: absolute;
-    backface-visibility: hidden;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -56,23 +54,41 @@ body {
     font-size: 2rem;
     width: 100%;
     height: 100%;
+    backface-visibility: hidden; /* needed to flip */
+    pointer-events: none;
 }
 
 .front {
-    background: #ffffff10;
+    background: lightgray;
+    z-index: 2; /* front is on top */
 }
 
 .back {
     background: white;
     color: black;
     transform: rotateY(180deg);
+    z-index: 1; /* back is below */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* prevent emoji overflow */
+}
+
+.back span {
+    display: block;
+    font-size: 2.5rem;
+    word-break: break-word; /* ensure emoji sequences stay inside */
+    max-width: 90%;
+    max-height: 90%;
+    overflow: hidden;
+    text-align: center;
 }
 
 button {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 1rem;
-    background: #ffffff30;
+    background: gray;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -80,7 +96,7 @@ button {
 }
 
 button:hover {
-    background: #ffffff50;
+    background: lightgray;
 }
 
 #win-message, #lose-message {
@@ -96,10 +112,10 @@ button:hover {
     max-width: 500px;
     margin: 100px auto;
     padding: 30px;
-    background: rgba(0,0,0,0.3);
+    background: black;
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    box-shadow: gray;
 }
 
 .level-buttons {
@@ -123,6 +139,6 @@ button:hover {
 
 .level-btn.selected, .level-btn:hover {
     background-color: white;
-    color: #2ebf91;
+    color: green;
     font-weight: bold;
 }
