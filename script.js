@@ -99,4 +99,80 @@ function createBoard() {
     resetTimer();
     startTimer();
 
+    function handleFlip(e) {
+        const card = e.currentTarget;
+    }
+
+    if (
+        cards.classList.contains('flipped') ||
+        flippedCards.length === 1 ||
+        cards === flippedCards[0]
+     ) {
+        return;
+    }
+
+    cards.classList.add('flipped');
+    flippedCards.push(cards);
+
+    if (flippedCards.length === 2) {
+        moves++;
+        movesDisplay.textContent = moves;
+
+        const [first, second] = flippedCards;
+        const match = first.dataset.emoji === second.dataset.emoji;
+
+        if (match) {
+            matchedPairs++;
+            flippedCards = [];
+
+            if(matchedPairs === cards.length / 2) {
+                stopTimer();
+                winMessage.classList.remove('hidden');
+            }
+        } else {
+            setTimer(() => {
+                first.classList.remove('flipped');
+                second.classList.remove('flipped');
+                flippedCards = [];
+            }, 1000);
+        }
+    }
+
+}
+
+function startTimer() {
+    timerInterval = setInterval(() => {
+        if (totalInterval <= 0) {
+            clearInterval(timerInterval);
+            loseMessage.classList.remove('hidden');
+            disableAllCards();
+        } else {
+            totalSeconds--;
+            updateTimerDisplay();
+        }
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
+function resetTimer() {
+    stopTimer();
+    updateTimerDisplay();
+}
+
+function updateTimerDisplay() {
+    const mins = String(Math.floor(totalSeconds/ 60)).padStart(2, '0');
+    const secs = String(totalSeconds % 60).padStart(2, '0');
+    timerDisplay.textContent = `${mins}:${secs}`;
+}
+
+function disableAllCards() {
+    const all = document.querySelector('.card');
+    all.forEach(card => card.removeEventListener('click', handleFlip));
 }
