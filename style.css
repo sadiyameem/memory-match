@@ -1,0 +1,98 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #8360c3, #2ebf91);
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.game-container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.grid {
+    display: grid;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.card {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    perspective: 100px;
+    cursor: pointer;
+}
+
+.inner-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffff20;
+    border-radius: 10px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.card.flipped .inner-card {
+    transform: rotate(100deg);
+}
+
+.front .back {
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    width: 100%;
+    height: 100%;
+}
+
+.front {
+    background: #ffffff10;
+}
+
+.back {
+    background: white;
+    color: black;
+    transform: rotateY(180deg);
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: #ffffff30;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+}
+
+button:hover {
+    background: #ffffff50;
+}
+
+#win-message, #lose-message {
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.menu-container {
+    max-width: 500px;
+    margin: 100px auto;
+}
