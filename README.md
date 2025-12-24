@@ -14,7 +14,7 @@
 - JavaScript
 
 # Motivation
-- I wanted to do this project again but make it flavortown theme related with the food and animals.
+- I wanted to do this project again but make it flavortown theme related with the food.
 
 # Challenges/Learning
 - I learned how to add different levels, a timer and a move counter all in a video. 
