@@ -88,11 +88,11 @@ button {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 1rem;
-    background: gray;
+    background: orange;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    color: white;
+    color: black;
 }
 
 button:hover {
@@ -112,7 +112,7 @@ button:hover {
     max-width: 500px;
     margin: 100px auto;
     padding: 30px;
-    background: black;
+    background: darkslateblue;
     border-radius: 15px;
     text-align: center;
     box-shadow: gray;
