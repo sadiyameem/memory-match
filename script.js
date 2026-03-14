@@ -1,4 +1,4 @@
-const avaliableEmojis = ['🍎','🍐','🍊','🍋','🍋‍🟩','🍌','🍉','🍇','🍓','🫐','🍈','🍒','🍑','🥭','🍍'];
+const friutEmojis = ['🍎','🍐','🍊','🍋','🍋‍🟩','🍌','🍉','🍇','🍓','🫐','🍈','🍒','🍑','🥭','🍍'];
 
 let cards = [];
 let flippedCards = [];
@@ -120,7 +120,7 @@ function createBoard() {
         gridColumns = 6; }
 
 // duplicate and shuffle cards
-cards = shuffle([...avaliableEmojis.slice(0, pairs), ...avaliableEmojis.slice(0, pairs)]);
+cards = shuffle([...friutEmojis.slice(0, pairs), ...friutEmojis.slice(0, pairs)]);
 
 // clear board and set grid
     board.innerHTML = '';
